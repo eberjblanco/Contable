@@ -714,8 +714,8 @@
 
 
         TpoCompro = "0"
-        if (excelRows[i]['FIRMA DE CONTADORES FABIAN TORRES S.A.S.'] != '') {
-          TpoCompro = excelRows[i]['FIRMA DE CONTADORES FABIAN TORRES S.A.S.']
+        if (excelRows[i]['CHANGE COLOMBIA'] != '') {
+          TpoCompro = excelRows[i]['CHANGE COLOMBIA']
         }
 
        
@@ -760,47 +760,56 @@
           ComproAnu = excelRows[i]['__EMPTY_18']
         }
        
-        BaseReten = "0"
+       //empty 32 base de retencion NUEVO DATO
+       /* BaseReten = "0"
         if (excelRows[i]['__EMPTY_27']!= '') {
           BaseReten = excelRows[i]['__EMPTY_27']
-        }
-
-        GrupoAct = "0"
+        } */
+       //empty 32 base de retencion NUEVO DATO INGRESADO
+        BaseReten = "0"
         if (excelRows[i]['__EMPTY_32']!= '') {
-          GrupoAct = excelRows[i]['__EMPTY_32']
+          BaseReten = excelRows[i]['__EMPTY_32']
         }
 
-        CodAct = "0"
-        if (excelRows[i]['__EMPTY_33']!= '') {
-          CodAct = excelRows[i]['__EMPTY_33']
-        }
-
-        NroDocProvee = "0"
-        if (excelRows[i]['__EMPTY_37']!= '') {
-          NroDocProvee = excelRows[i]['__EMPTY_37']
-        }
-
-        PrefDocProvee = "0"
+        //Cambio de lugar EMPTY_32 al EMPTY_38 por el nuevo documento
+        GrupoAct = "0"
         if (excelRows[i]['__EMPTY_38']!= '') {
-          PrefDocProvee =excelRows[i]['__EMPTY_38']
+          GrupoAct = excelRows[i]['__EMPTY_38']
         }
+        //Cambio de lugar EMPTY_33 al EMPTY_39 por el nuevo documento
+        CodAct = "0"
+        if (excelRows[i]['__EMPTY_39']!= '') {
+          CodAct = excelRows[i]['__EMPTY_39']
+        }
+        //empty 43 numero documetno proveeedor NUEVO DATO
+        NroDocProvee = "0"
+        if (excelRows[i]['__EMPTY_43']!= '') {
+          NroDocProvee = excelRows[i]['__EMPTY_43']
+        }
+        //empty 44 numero documento proveedodr NUEVO DATO
+        PrefDocProvee = "0"
+        if (excelRows[i]['__EMPTY_44']!= '') {
+          PrefDocProvee =excelRows[i]['__EMPTY_44']
+        }
+        //Cambio de lugar de EMPTY_39,EMPTY_40 y EMPTY_41 a EMPTY_45, EMPTY_46 y EMPTY_47.
         FecDocProvee = "0"
-        if (excelRows[i]['__EMPTY_39'] != '') {
-          FecDocProvee = excelRows[i]['__EMPTY_39']+' - ' +excelRows[i]['__EMPTY_40'] +' - '+ excelRows[i]['__EMPTY_41']
+        if (excelRows[i]['__EMPTY_45'] != '') {
+          FecDocProvee = excelRows[i]['__EMPTY_45']+' - ' +excelRows[i]['__EMPTY_46'] +' - '+ excelRows[i]['__EMPTY_47']
         }
-
+        //empty 53 tipo y comprovante cruce NUEVO DATO
         TpoComproCruce = "0"
-        if (excelRows[i]['__EMPTY_46']!= '') {
-          TpoComproCruce = excelRows[i]['__EMPTY_46']
+        if (excelRows[i]['__EMPTY_53']!= '') {
+          TpoComproCruce = excelRows[i]['__EMPTY_53']
         }
-
+        //empty 54 numero y documento cruce NUEVO DATO
         NroDocCruce = "0"
-        if (excelRows[i]['__EMPTY_47']!= '') {
-          NroDocCruce = excelRows[i]['__EMPTY_47']
+        if (excelRows[i]['__EMPTY_54']!= '') {
+          NroDocCruce = excelRows[i]['__EMPTY_54']
         }
+        //Cambio de lugar de EMPTY_49,EMPTY_50 y EMPTY_51 a EMPTY_56, EMPTY_57 y EMPTY_58.
         FecDocCruce = "0"
-        if (excelRows[i]['__EMPTY_49'] != '') {
-          FecDocCruce = excelRows[i]['__EMPTY_49']+' - ' +excelRows[i]['__EMPTY_50'] +' - '+ excelRows[i]['__EMPTY_51']
+        if (excelRows[i]['__EMPTY_56'] != '') {
+          FecDocCruce = excelRows[i]['__EMPTY_56']+' - ' +excelRows[i]['__EMPTY_57'] +' - '+ excelRows[i]['__EMPTY_58']
         }
 
 
