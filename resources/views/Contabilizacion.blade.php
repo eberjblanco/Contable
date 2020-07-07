@@ -765,7 +765,7 @@
         if (excelRows[i]['__EMPTY_27']!= '') {
           BaseReten = excelRows[i]['__EMPTY_27']
         } */
-       //empty 32 base de retencion NUEVO DATO INGRESADO
+       //empty 32 base de retencion NUEVO DATO INGRESADO....
         BaseReten = "0"
         if (excelRows[i]['__EMPTY_32']!= '') {
           BaseReten = excelRows[i]['__EMPTY_32']
