@@ -22,24 +22,29 @@ class ComproCController extends Controller{
         $cecosInexistentes ='';
        
     	foreach ($array as $value) {
+            
+
+
             //busque si existe el registro	
     		  	$Registro = Comprobantes::where('CodCompro','=',$value[5])
                             ->Where('CtaConta','=',$value[7])
                             ->Where('NroDoc','=',$value[6])
                             ->Where('DebCre','=',$value[8])
                             ->get();
+
                 if (count($Registro)==1) {                     
                      $registrosExistentes = $registrosExistentes + 1;
                      continue;
                 }
 
             //Busca si existe el CECO
-                $Registro = Cc::where('codigo','=',trim($value[2]).'-'.trim($value[11]))
+                $Registro = Cc::where('codigo','=',trim($value[2]).'-'.trim($value[10]))
                             ->Where('id_empresa','=',$id_empresa)
                             ->get();
+
                 if (count($Registro)==0) {                     
-                     $cecosInexistentes = $cecosInexistentes.trim($value[2]).'-'.trim($value[11]) .',';
-                     continue;
+                    $cecosInexistentes = $cecosInexistentes.trim($value[2]).'-'.trim($value[10]) .',';
+                    continue;
                 }
 
             //agregas los registros
@@ -67,9 +72,7 @@ class ComproCController extends Controller{
                     'NroDocCruce'=> trim($value[20]), 
                     'FecDocCruce'=> trim($value[21])
                 ]);
-
                 $registrosagregados = $registrosagregados + 1;
-                           
 		}      
 
         $respuesta = ['registrosagregados' => $registrosagregados, 
@@ -78,6 +81,6 @@ class ComproCController extends Controller{
             'Status' => 'Ok'
         ];
 
-        return json_encode($respuesta); 
+        return json_encode($respuesta);        
     }
 }

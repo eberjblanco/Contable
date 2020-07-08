@@ -380,7 +380,7 @@
             </tbody>
           </table>                 
         </div>
-        <div class="table-responsive" style="display: none">
+        <div class="table-responsive" style="display: none;">
           <table id="example4" class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -862,7 +862,7 @@
           success:function(data){
             respuesta = JSON.parse(data)
             //console.log(respuesta.registrosagregados)
-            if (respuesta.registrosagregados!='0') {
+           if (respuesta.registrosagregados!='0') {
               mensaje = "Se agregaron " + respuesta.registrosagregados + " registros"
               toastr.success(mensaje)
             }
@@ -885,9 +885,6 @@
                location.reload()
              }, 3000);
             
-            
-
-
           }
       })
     }
