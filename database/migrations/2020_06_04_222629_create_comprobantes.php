@@ -16,28 +16,28 @@ class CreateComprobantes extends Migration
         Schema::create('comprobantes', function (Blueprint $table) {
             $table->id();            
             $table->string('TpoCompro');
-            $table->double('CodCompro');
-            $table->double('NroDoc');
+            $table->string('CodCompro');
+            $table->string('NroDoc');
 
             $table->string('CtaConta');
             $table->string('DebCre');
-            $table->double('ValSec');
+            $table->string('ValSec');
             $table->string('FecDoc');
-            $table->double('Secuencia');
+            $table->string('Secuencia');
             $table->string('Ceco');
-            $table->double('SubCeco');
+            $table->string('SubCeco');
             $table->string('Nit');
             $table->string('DescSec');
             $table->string('ComproAnu');
 
-            $table->double('BaseReten');
-            $table->double('GrupoAct');
-            $table->double('CodAct');
-            $table->double('NroDocProvee');
+            $table->string('BaseReten');
+            $table->string('GrupoAct');
+            $table->string('CodAct');
+            $table->string('NroDocProvee');
             $table->string('PrefDocProvee');
             $table->string('FecDocProvee');
-            $table->double('TpoComproCruce');
-            $table->double('NroDocCruce');
+            $table->string('TpoComproCruce');
+            $table->string('NroDocCruce');
             $table->string('FecDocCruce');
 
 

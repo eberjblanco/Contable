@@ -25,7 +25,8 @@ class ComproCController extends Controller{
             
 
 
-            //busque si existe el registro	
+            //busque si existe el registro	para no duplicados
+
     		  	$Registro = Comprobantes::where('CodCompro','=',$value[5])
                             ->Where('CtaConta','=',$value[7])
                             ->Where('NroDoc','=',$value[6])
@@ -38,12 +39,12 @@ class ComproCController extends Controller{
                 }
 
             //Busca si existe el CECO
-                $Registro = Cc::where('codigo','=',trim($value[2]).'-'.trim($value[10]))
+                $Registro = Cc::where('codigo','=',trim($value[2]).'-'.trim($value[11]))
                             ->Where('id_empresa','=',$id_empresa)
                             ->get();
 
                 if (count($Registro)==0) {                     
-                    $cecosInexistentes = $cecosInexistentes.trim($value[2]).'-'.trim($value[10]) .',';
+                    $cecosInexistentes = $cecosInexistentes.trim($value[2]).'-'.trim($value[11]) .',';
                     continue;
                 }
 
@@ -81,6 +82,7 @@ class ComproCController extends Controller{
             'Status' => 'Ok'
         ];
 
-        return json_encode($respuesta);        
+        return json_encode($respuesta);   
+        
     }
 }

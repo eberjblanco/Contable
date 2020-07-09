@@ -381,64 +381,65 @@
           </table>                 
         </div>
         <div class="table-responsive" style="display: none;">
-          <table id="example4" class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>FecDoc</th>
-                <th>Nit</th>
-                <th>Ceco</th>
-                <th>DescSec</th>
-                <!--ocultas-->
-                <th>TpoCompro</th>
-                <th>CodCompro</th>
-                <th>NroDoc</th>
-                <th>CtaConta</th>
-                <th>DebCre</th>
-                <th>ValSec</th>                
-                <th>Secuencia</th>
-                <th>SubCeco</th>                               
-                <th>ComproAnu</th>
-                <th>BaseReten</th>
-                <th>GrupoAct</th>
-                <th>CodAct</th>
-                <th>NroDocProvee</th>
-                <th>PrefDocProvee</th>
-                <th>FecDocProvee</th>
-                <th>TpoComproCruce</th>
-                <th>NroDocCruce</th>
-                <th>FecDocCruce</td>
-              </tr>
-            </thead>
-            <tbody id="tbody">
-              <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+          <form method="GET" action="{{  route('ComproC.guardar') }}">
+            <table id="example4"  class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>FecDoc</th>
+                  <th>Nit</th>
+                  <th>Ceco</th>
+                  <th>DescSec</th>
+                  <!--ocultas-->
+                  <th>TpoCompro</th>
+                  <th>CodCompro</th>
+                  <th>NroDoc</th>
+                  <th>CtaConta</th>
+                  <th>DebCre</th>
+                  <th>ValSec</th>                
+                  <th>Secuencia</th>
+                  <th>SubCeco</th>                               
+                  <th>ComproAnu</th>
+                  <th>BaseReten</th>
+                  <th>GrupoAct</th>
+                  <th>CodAct</th>
+                  <th>NroDocProvee</th>
+                  <th>PrefDocProvee</th>
+                  <th>FecDocProvee</th>
+                  <th>TpoComproCruce</th>
+                  <th>NroDocCruce</th>
+                  <th>FecDocCruce</td>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
 
-                <td>0</td>     
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>                
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>                
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>                
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                
-                
-              </tr>
-            </tbody>
-          </table> 
+                  <td>0</td>     
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>                
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>                
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>                
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>                  
+                </tr>
+              </tbody>
+            </table> 
+            <button type="submit">enviar</button>
+          </form>
         </div>      
       </div>
       <div class="modal-footer">
@@ -463,6 +464,7 @@
   <p id="mensaje" style="visibility: hidden;">{{ $data['Texto']}}</p>
   <div id="contReg" num="{{ count($data['Registros']) }}"></div>
   <div id="contRegComp" num="{{ count($data['Comprobantes']) }}"></div>
+
 
 
 
@@ -853,14 +855,15 @@
 
       var ajaxurl = '{{ route('ComproC.guardar') }}';
       var tabla = tablaJSON('example4')
-      id_empresa = $('id_empresa').val()
+      id_empresa = $('#id_empresa').val()
+    
 
       $.ajax({
           url: ajaxurl,
           method: "GET",
           data:{_token: '{{csrf_token()}}', tabla:tabla, id_empresa:id_empresa},
           success:function(data){
-            respuesta = JSON.parse(data)
+             respuesta = JSON.parse(data)
             //console.log(respuesta.registrosagregados)
            if (respuesta.registrosagregados!='0') {
               mensaje = "Se agregaron " + respuesta.registrosagregados + " registros"
@@ -879,7 +882,7 @@
             }
 
            //reinicia la pagina
-           setTimeout(
+          setTimeout(
              function() 
              {
                location.reload()
