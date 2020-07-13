@@ -33,7 +33,7 @@
               <label for="exampleInputPassword1">Razón</label>
               <input required="" name="Razon_nva" type="text" class="form-control" id="Razon_nva" placeholder="Ingrese Razón ">
             </div>
-          
+          <p>hola mundo</p>
           </div>         
 
           <div class="card-footer">
