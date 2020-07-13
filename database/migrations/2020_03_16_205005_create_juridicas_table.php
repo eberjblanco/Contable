@@ -15,8 +15,15 @@ class CreateJuridicasTable extends Migration
     {
         Schema::create('juridicas', function (Blueprint $table) {
             $table->id();
-             $table->string('Nit');
+            $table->string('Nit');
             $table->string('Razon');
+            //nuevos campos agregados
+            $table->string('Departamento');
+            $table->string('Municipio');
+            $table->string('Direccion');
+            $table->string('Correo');
+            //$table->string('Logo');
+            $table->string('Telefono');
             $table->timestamps();
         });
     }

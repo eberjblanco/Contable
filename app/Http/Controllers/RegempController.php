@@ -44,7 +44,7 @@ class RegempController extends Controller
      */
     public function create()
     {
-        //
+        ///
     }
 
     /**
@@ -55,11 +55,13 @@ class RegempController extends Controller
      */
     public function store(Request $request)
     {
+
         try {
 
              $Nit = Regemp::where('Razon','=',request('Razon_nva'))
                         ->orWhere('Nit','=',request('Nit_nva'))
                         ->get();
+
 
         if (count($Nit) > 0) {
             $men = 'El Nit o la Razón ya existe en el sistema';
@@ -71,10 +73,17 @@ class RegempController extends Controller
             return view('regemp')->with('data',$data);
 
         }else{
-           
+
+
             $id_empresa = Regemp::create([
                 'Nit'=> request('Nit_nva'),
                 'Razon'=> request('Razon_nva'),
+                'Departamento'=> request('Departamento_nva'),
+                'Municipio'=> request('Municipio_nva'),
+                'Direccion'=> request('Direccion_nva'),
+                'Correo'=> request('Correo_nva'),
+                'Telefono'=> request('Telefono_nva'),
+
             ]);
 
             // creas centro de costo principal
@@ -187,6 +196,11 @@ class RegempController extends Controller
             $empresa = Regemp::find(request('id'));
             $empresa->Nit = request('Nit_edit');
             $empresa->Razon = request('Razon_edit');
+            $empresa->Departamento = request('Departamento_edit');
+            $empresa->Municipio = request('Municipio_edit');
+            $empresa->Direccion = request('Direccion_edit');
+            $empresa->Correo = request('Correo_edit');
+            $empresa->Telefono = request('Telefono_edit');
             $empresa->save();
 
 
