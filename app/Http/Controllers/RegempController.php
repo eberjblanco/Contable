@@ -89,8 +89,8 @@ class RegempController extends Controller
             // creas centro de costo principal
             Cc::create([
                 'id_empresa'=> $id_empresa['id'],
-                'codigo'=> 'PR-01',
-                'descripcion'=> 'PP-00',
+                'codigo'=> '1-0',
+                'descripcion'=> '1-0',
                 'habilitado'=> 1,
                 'año'=> date('Y'),
                 'mes'=> date('n'),
@@ -118,6 +118,11 @@ class RegempController extends Controller
                 mkdir($micarpeta.'/Nominas', 0777, true);
                 mkdir($micarpeta.'/Otros', 0777, true);
             }
+
+            //subir archivo del logo
+                $target_path = public_path().'/logos/'.$id_empresa['id'].'.jpeg';                
+                move_uploaded_file($_FILES['imgInp']['tmp_name'], $target_path);
+
 
             $men = 'La Empresa se ha Registrado';
             $Empresas = Regemp::get();       
@@ -177,9 +182,10 @@ class RegempController extends Controller
 
 
        
-        $Nit = Regemp::where('Razon','=',request('Razon_edit'))
-                        ->orWhere('Nit','=',request('Nit_edit'))
-                        ->get();
+        //$Nit = Regemp::where('Razon','=',request('Razon_edit'))
+                        //->orWhere('Nit','=',request('Nit_edit'))
+                        //->get();
+        $Nit=0;
 
         if (count($Nit) > 0) {
             $men = 'El Nit o la Razón ya existe en el sistema';
@@ -194,8 +200,8 @@ class RegempController extends Controller
 
 
             $empresa = Regemp::find(request('id'));
-            $empresa->Nit = request('Nit_edit');
-            $empresa->Razon = request('Razon_edit');
+            //$empresa->Nit = request('Nit_edit');
+            //$empresa->Razon = request('Razon_edit');
             $empresa->Departamento = request('Departamento_edit');
             $empresa->Municipio = request('Municipio_edit');
             $empresa->Direccion = request('Direccion_edit');

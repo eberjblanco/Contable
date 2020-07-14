@@ -165,113 +165,15 @@
             @forelse($data['Empresas'] as $EmpresasItem)
               <tr>
                 <td>{{ $EmpresasItem->id }}</td>
-                <form method="POST" action="{{route('regemp.update',$EmpresasItem->id)}}">
-                  @csrf
-                  @method('PATCH')
-                  <input type="hidden" name="id" id="id" value="{{ $EmpresasItem->id }}">
+               
                   <td>{{ $EmpresasItem->Nit }}</td>
 
                   <td>{{ $EmpresasItem->Razon }}</td>
-                </form>
-    <!-- ANTIGUO BOTON PARA EDITAR -->    
-    <!--          
-           <td>
-                      <button class="btn btn-warning" ><ion-icon name="create-outline"></ion-icon></button>
-                  </td> 
-                      </form> -->
-  <!-- FIN ANTIGUO BOTON PARA EDITAR -->                         
- <!-- STAR MODAL -->              
-<td>
-
-      <!-- modal trigger -->
-      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><ion-icon name="create-outline"></ion-icon>
-      </button>         
-<!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-          <!--  FORMULARIO MODAL -->
-                  <form method="POST" action="{{route('regemp.update',$EmpresasItem->id)}}">
-                    @csrf
-                    @method('PATCH')
-                  <input type="hidden" name="id" id="id" value="{{ $EmpresasItem->id }}">
-                     <div class="row">
-                        <div class="col">   
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Nit</label>
-                              <input type="text" name="Nit_edit" id="Nit_edit" class="form-control" placeholder="Nit" value="{{ $EmpresasItem->Nit }}">
-                            </div>
-                        </div>
-                              <br>
-                          <div class="col">      
-                            <div class="form-group">
-                               <label for="exampleInputPassword1">Razon</label>
-                              <input type="text" name="Razon_edit" id="Razon_edit" class="form-control" placeholder="Razon" value="{{ $EmpresasItem->Razon }}">   
-                            </div> 
-                          </div>
-                      </div>
-                  <br>
-                      <div class="row">
-                          <div class="col">  
-                              <div class="form-group">
-                                 <label for="exampleInputPassword1">Departamento</label>
-                                <input type="text" name="Departamento_edit" id="Departamento_edit" class="form-control" placeholder="Departamento" value="{{ $EmpresasItem->Departamento }}">   
-                              </div> 
-                          </div> 
-                              <br>
-                          <div class="col">  
-                              <div class="form-group">
-                                 <label for="exampleInputPassword1">Municipio</label>
-                                <input type="text" name="Municipio_edit" id="Municipio_edit" class="form-control" placeholder="Municipio" value="{{ $EmpresasItem->Municipio }}">   
-                              </div> 
-                          </div>  
-                      </div>
-                  <br>
-                  <div class="form-group">
-                     <label for="exampleInputPassword1">Direccion</label>
-                    <input type="text" name="Direccion_edit" id="Direccion_edit" class="form-control" placeholder="Direccion" value="{{ $EmpresasItem->Direccion }}">
-                  </div>    
-                  <br>
-          <div class="row">
-              <div class="col">  
-                  <div class="form-group">
-                     <label for="exampleInputPassword1">Correo</label>
-                    <input type="email" name="Correo_edit" id="Correo_edit" class="form-control" placeholder="Correo" value="{{ $EmpresasItem->Correo }}">   
-                  </div> 
-              </div>
-                  <br>
-              <div class="col">  
-                  <div class="form-group">
-                     <label for="exampleInputPassword1">Telefono</label>
-                    <input type="text" name="Telefono_edit" id="Telefono_edit" class="form-control" placeholder="Telefono" value="{{ $EmpresasItem->Telefono }}">   
-                  </div> 
-              </div>
-          </div>
-
-          <!-- BOTON ENVIAR -->
-                  <div class="card-footer">
-                      <button type="submit" class="btn btn-warning" style="float:right;">Actualizar</button>
-                  </div>
-
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
-            </div>
-          </div>                    
-</td>
-
-<!-- END MODAL -->                 
-
+               
+           
+                <td>
+                  <button id="btn_editar_{{$EmpresasItem->id}}" idEmpresa="{{$EmpresasItem->id}}" Nit="{{$EmpresasItem->Nit}}" Razon="{{$EmpresasItem->Razon}}" Depto="{{$EmpresasItem->Departamento}}" Municipio="{{$EmpresasItem->Municipio}}" Direccion="{{$EmpresasItem->Direccion}}" Correo="{{$EmpresasItem->Correo}}" Telefono="{{$EmpresasItem->Telefono}}" type="button" class="btn btn-warning" onclick="editar({{$EmpresasItem->id}})"><ion-icon name="create-outline"></ion-icon></button>
+                </td>
                 <td>
                   
                     <form method="POST" action="{{route('regemp.destroy',$EmpresasItem->id)}}">
@@ -310,6 +212,120 @@
       </div>     
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="modal fade" id="exampleModal" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+         
+                  <form method="POST" action="{{route('regemp.update',$EmpresasItem->id)}}">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="id" id="id" value="{{ $EmpresasItem->id }}">
+                     <div class="row">
+                        <div class="col">   
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Nit</label>
+                              <input readonly="" type="text" name="Nit_edit" id="Nit_edit" class="form-control" placeholder="Nit" value="">
+                            </div>
+                        </div>
+                              <br>
+                          <div class="col">      
+                            <div class="form-group">
+                               <label for="exampleInputPassword1">Razon</label>
+                              <input readonly="" type="text" name="Razon_edit" id="Razon_edit" class="form-control" placeholder="Razon" value="">   
+                            </div> 
+                          </div>
+                      </div>
+                  <br>
+                      <div class="row">
+                          <div class="col">  
+                              <div class="form-group">
+                                 <label for="exampleInputPassword1">Departamento</label>
+                                <input type="text" name="Departamento_edit" id="Departamento_edit" class="form-control" placeholder="Departamento" value="">   
+                              </div> 
+                          </div> 
+                              <br>
+                          <div class="col">  
+                              <div class="form-group">
+                                 <label for="exampleInputPassword1">Municipio</label>
+                                <input type="text" name="Municipio_edit" id="Municipio_edit" class="form-control" placeholder="Municipio" value="">   
+                              </div> 
+                          </div>  
+                      </div>
+                  <br>
+                  <div class="form-group">
+                     <label for="exampleInputPassword1">Direccion</label>
+                     <textarea type="text" name="Direccion_edit" id="Direccion_edit" class="form-control" placeholder="Direccion" value=""></textarea>                    
+                  </div>    
+                  <br>
+          <div class="row">
+              <div class="col">  
+                  <div class="form-group">
+                     <label for="exampleInputPassword1">Correo</label>
+                    <input type="email" name="Correo_edit" id="Correo_edit" class="form-control" placeholder="Correo" value="">   
+                  </div> 
+              </div>
+                  <br>
+              <div class="col">  
+                  <div class="form-group">
+                     <label for="exampleInputPassword1">Telefono</label>
+                    <input type="text" name="Telefono_edit" id="Telefono_edit" class="form-control" placeholder="Telefono" value="">   
+                  </div> 
+              </div>
+          </div>
+
+          <!-- BOTON ENVIAR -->
+                  <div class="card-footer">
+                      <button type="submit" class="btn btn-warning" style="float:right;">Actualizar</button>
+                  </div>
+
+                  </form>
+
+
+
+
+
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div> 
+
+
+
+
+
+
+
+
+
 
 <p id="tipo" style="visibility: hidden;">{{ $data['Tipo']}}</p>
 <p id="mensaje" style="visibility: hidden;">{{ $data['Texto']}}</p>
@@ -385,24 +401,38 @@
       $("#btn_cam_img").click();
     }
 
-  </script>
-
-  <script type="text/javascript">
-function readImage (input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-          $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+     function readImage (input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+        }
+        reader.readAsDataURL(input.files[0]);
       }
-      reader.readAsDataURL(input.files[0]);
     }
-  }
 
-  $("#imgInp").change(function () {
-    // Código a ejecutar cuando se detecta un cambio de archivO
-    readImage(this);
-  });
+    $("#imgInp").change(function () {
+      // Código a ejecutar cuando se detecta un cambio de archivO
+      readImage(this);
+    });
+
+    function editar(id) {
+      $('#Nit_edit').val($('#btn_editar_'+id).attr('Nit'))
+      $('#Razon_edit').val($('#btn_editar_'+id).attr('Razon'))
+      $('#Departamento_edit').val($('#btn_editar_'+id).attr('Depto'))
+      $('#Municipio_edit').val($('#btn_editar_'+id).attr('Municipio'))
+      $('#Direccion_edit').val($('#btn_editar_'+id).attr('Direccion'))
+      $('#Correo_edit').val($('#btn_editar_'+id).attr('Correo'))
+      $('#Telefono_edit').val($('#btn_editar_'+id).attr('Telefono'))
+
+
+      $('#exampleModal').modal('show')
+     
+    }
+
   </script>
+
+  
 @endsection
 
 
