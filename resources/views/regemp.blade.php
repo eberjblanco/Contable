@@ -33,7 +33,7 @@
             </div>
     </div>        
     <div class="col">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
               <label for="exampleInputPassword1">Razón</label>
               <input required="" name="Razon_nva" type="text" class="form-control" id="Razon_nva" placeholder="Ingrese Razón">
             </div>
@@ -174,7 +174,6 @@ NUEVO DATOS A RECOGER -->
           <tbody>
             @forelse($data['Empresas'] as $EmpresasItem)
               <tr>
-
                 <td>{{ $EmpresasItem->id }}</td>
                 <form method="POST" action="{{route('regemp.update',$EmpresasItem->id)}}">
                   @csrf
@@ -184,19 +183,20 @@ NUEVO DATOS A RECOGER -->
 
                   <td>{{ $EmpresasItem->Razon }}</td>
 
-    <!-- ANTIGUO BOTON PARA EDITAR -->              
-     <!--             <td>
+    <!-- ANTIGUO BOTON PARA EDITAR -->    
+    <!--          
+           <td>
                       <button class="btn btn-warning" ><ion-icon name="create-outline"></ion-icon></button>
-                  </td>
-                      </form>
-      -->
+                  </td> 
+                      </form> -->
   <!-- FIN ANTIGUO BOTON PARA EDITAR -->                         
  <!-- STAR MODAL -->              
 <td>
-<!-- Button trigger modal -->
+<!--
+ Button trigger modal 
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><ion-icon name="create-outline"></ion-icon>
-</button>
-
+</button> -->
+                     </form>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -209,6 +209,7 @@ NUEVO DATOS A RECOGER -->
       </div>
       <div class="modal-body">
 <!--  FORMULARIO MODAL -->
+
         <form method="POST" action="{{route('regemp.update',$EmpresasItem->id)}}">
           @csrf
           @method('PATCH')
@@ -311,10 +312,8 @@ NUEVO DATOS A RECOGER -->
                     </form> 
                 </td>
               </tr>
-
-            @empty
-               
-            @endforelse           
+              @empty
+              @endforelse
           </tbody>
         </table>  
         </div>
