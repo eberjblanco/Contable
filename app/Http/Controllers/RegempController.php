@@ -75,8 +75,8 @@ class RegempController extends Controller
         }else{
 
 
-            $id_empresa = Regemp::create([
-                'Nit'=> request('Nit_nva'),
+            $id_empresa = Regemp::create([                
+                'Nit'=> request('Nit_nva').'-'.request('Nit_nva_dig'),
                 'Razon'=> request('Razon_nva'),
                 'Departamento'=> request('Departamento_nva'),
                 'Municipio'=> request('Municipio_nva'),

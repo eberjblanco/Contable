@@ -79,6 +79,7 @@ class FacturaController extends Controller{
                 'id_cc' => request('cc'),
                 'tipo' => request('tipo')               
             ]);
+            
         //agrega historico
             histran::create([                
                 'id_tran' =>  $idTran['id'],       
