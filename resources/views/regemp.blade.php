@@ -51,6 +51,7 @@
               </div>
               <div class="col-md-8">
                 <div class="row">
+
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nit</label>
@@ -64,7 +65,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>        
+                  </div>   
+
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="exampleInputPassword1">Razón</label>
@@ -248,6 +250,7 @@
                     @method('PATCH')
                     <input type="hidden" name="id" id="id" value="{{ $EmpresasItem->id }}">
                      <div class="row">
+
                         <div class="col">   
                             <div class="form-group">
                               <label for="exampleInputPassword1">Nit</label>
@@ -263,21 +266,24 @@
                           </div>
                       </div>
                   <br>
-                      <div class="row">
-                          <div class="col">  
-                              <div class="form-group">
-                                 <label for="exampleInputPassword1">Departamento</label>
-                                <input type="text" name="Departamento_edit" id="Departamento_edit" class="form-control" placeholder="Departamento" value="">   
-                              </div> 
-                          </div> 
-                              <br>
-                          <div class="col">  
-                              <div class="form-group">
-                                 <label for="exampleInputPassword1">Municipio</label>
-                                <input type="text" name="Municipio_edit" id="Municipio_edit" class="form-control" placeholder="Municipio" value="">   
-                              </div> 
-                          </div>  
-                      </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Departamento</label>                 
+                      <select  class="form-control" name=Departamento_nva_edit id="Departamento_nva_edit" onchange="municipios_nva(this.value)">
+                        <option selected="" disabled="" value="">Seleccione Departamento</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Municipio</label>
+                        <select class="form-control" id="Municipio_nva_edit" name=Municipio_nva_edit > 
+                          <option selected="" disabled="" value="">Seleccione Municipio</option>
+                      </select> 
+                    </div> 
+                  </div>       
+                </div>
                   <br>
                   <div class="form-group">
                      <label for="exampleInputPassword1">Direccion</label>
@@ -396,7 +402,28 @@
           });
       });
     }
+      //llenar select de departamento_nva
+        $.getJSON("js/colombia.json", function(datos) {
+            $.each(datos, function(idx,id) {
+                $("#Departamento_nva_edit").append(new Option(id.departamento, id.departamento));
+            });
+        });
 
+    function municipios_nva(nombre) {
+      //limpias el select
+        $('#Municipio_nva_edit').empty().append('<option selected="selected" value="">Seleccione Municipio...</option>');
+
+      $.getJSON("js/colombia.json", function(datos) {
+          $.each(datos, function(idx,id) {
+              if (id.departamento==nombre) {
+                Total = id.ciudades.length
+                for (var i = 0; i < Total; i++) {
+                  $("#Municipio_nva_edit").append(new Option(id.ciudades[i], id.ciudades[i]));
+                }
+              }
+          });
+      });
+    }
     function cambiar(){     
       $("#btn_cam_img").click();
     }

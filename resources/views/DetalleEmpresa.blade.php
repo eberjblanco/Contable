@@ -14,6 +14,24 @@
    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
     <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+
+  <style type="text/css">
+    .imagen{
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      float: right;
+      margin-top: 3%;
+      margin-left: 3%;
+      margin-right: 4%;
+    } 
+    .textos{
+      float: right;
+      margin-top: 3%;
+      margin-left: 3%;
+      margin-right: 2%;
+    }
+  </style>
 @endsection
   
  
@@ -38,15 +56,17 @@
           
           <button  class="btn btn-warning"><ion-icon name="return-up-back-outline"></ion-icon></button>
         </form>
-      </div>  
-      <div class="col-md-6">
-        <div class="row" style="padding-left: 50%">
-          <h3>{{ $data['Empresa'][0]['Razon'] }}, </h3>
-          <p style="padding-top: 9px">Nit: {{ $data['Empresa'][0]['Nit'] }}</p>
-        </div>
+        </div>  
+          <div class="col-md-6">
+              <img src="{{ 'logos/' . $data['Empresa'][0]['id'] . '.jpeg'}}" class="imagen">
+              <div class="textos">
+              <h3 style="padding-top: 5px">{{ $data['Empresa'][0]['Razon'] }}, </h3>
+              <p style="padding-top: 5px"> Nit: {{ $data['Empresa'][0]['Nit']}}</p>  
+              </div>        
+          </div>
       </div> 
     </div>
-  </div>
+
   <hr>
   
 

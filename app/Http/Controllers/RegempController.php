@@ -187,7 +187,7 @@ class RegempController extends Controller
                         //->get();
         $Nit=0;
 
-        if (count($Nit) > 0) {
+        if ($Nit > 0) {
             $men = 'El Nit o la Razón ya existe en el sistema';
             $Empresas = Regemp::get();       
             $data = ['Empresas' => $Empresas, 
@@ -202,8 +202,8 @@ class RegempController extends Controller
             $empresa = Regemp::find(request('id'));
             //$empresa->Nit = request('Nit_edit');
             //$empresa->Razon = request('Razon_edit');
-            $empresa->Departamento = request('Departamento_edit');
-            $empresa->Municipio = request('Municipio_edit');
+            $empresa->Departamento = request('Departamento_nva_edit');
+            $empresa->Municipio = request('Municipio_nva_edit');
             $empresa->Direccion = request('Direccion_edit');
             $empresa->Correo = request('Correo_edit');
             $empresa->Telefono = request('Telefono_edit');

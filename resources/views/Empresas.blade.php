@@ -14,6 +14,24 @@
    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
     <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+
+  <style type="text/css">
+    .imagen{
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      float: left;
+      margin-top: 3%;
+      margin-left: 3%;
+      margin-right: 4%;
+    } 
+    .textos{
+      float: left;
+      margin-top: 4%;
+      margin-left: 3%;
+      margin-right: 4%;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -43,16 +61,13 @@
                     <input type="hidden" value="{{ $EmpresasItem->id_empresa }}" name="id_empresa" id="id_empresa">
                     <input type="hidden" name="Vengo" id="Vengo" value="Empresas.index">
                     <td>
-                      <div class="row">
-                        <div style="padding: 5px">
-                           
-                        </div>
-                        <div>
-                          <h3>{{ $EmpresasItem->Empresa->Razon }}</h3>
-                          <p>Nit: {{ $EmpresasItem->Empresa->Nit }}</p>    
-                        </div>
-                      </div>
-                      
+                    <div class="col-md-6">
+                       <img src="{{ 'logos/'.$EmpresasItem->id_empresa.'.jpeg'}}" class="imagen">  
+                        <div class="textos">                                         
+                        <h3>{{ $EmpresasItem->Empresa->Razon }},</h3>
+                        <p>Nit: {{ $EmpresasItem->Empresa->Nit }}</p>  
+                        </div>                    
+                    </div>          
                     </td>
                     <td>
                       @if($EmpresasItem->id_status==1)
