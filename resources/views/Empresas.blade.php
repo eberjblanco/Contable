@@ -35,7 +35,7 @@
 @endsection
 
 @section('content')
-
+<!-- locales -->
   <div class="col-md-12">
     <div class="card card-warning">
       <div class="card-header">
